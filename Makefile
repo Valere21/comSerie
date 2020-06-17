@@ -197,6 +197,7 @@ DIST          = ../raspi/qt5/mkspecs/features/spec_pre.prf \
 		../raspi/qt5/mkspecs/features/qt_config.prf \
 		../raspi/qt5/mkspecs/devices/linux-rasp-pi-g++/qmake.conf \
 		../raspi/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../raspi/qt5/mkspecs/features/exclusive_builds.prf \
 		../raspi/qt5/mkspecs/features/toolchain.prf \
 		../raspi/qt5/mkspecs/features/default_pre.prf \
@@ -367,6 +368,7 @@ Makefile: testSerial.pro ../raspi/qt5/mkspecs/devices/linux-rasp-pi-g++/qmake.co
 		../raspi/qt5/mkspecs/features/qt_config.prf \
 		../raspi/qt5/mkspecs/devices/linux-rasp-pi-g++/qmake.conf \
 		../raspi/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../raspi/qt5/mkspecs/features/exclusive_builds.prf \
 		../raspi/qt5/mkspecs/features/toolchain.prf \
 		../raspi/qt5/mkspecs/features/default_pre.prf \
@@ -527,6 +529,7 @@ Makefile: testSerial.pro ../raspi/qt5/mkspecs/devices/linux-rasp-pi-g++/qmake.co
 ../raspi/qt5/mkspecs/features/qt_config.prf:
 ../raspi/qt5/mkspecs/devices/linux-rasp-pi-g++/qmake.conf:
 ../raspi/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../raspi/qt5/mkspecs/features/exclusive_builds.prf:
 ../raspi/qt5/mkspecs/features/toolchain.prf:
 ../raspi/qt5/mkspecs/features/default_pre.prf:
