@@ -7,7 +7,7 @@ Serial::Serial()
 
 void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
-    m_pinRX = new QSerialPort(listPort.at(2));
+    m_pinRX = new QSerialPort(listPort.at(1));
 
     m_pinRX->open(QIODevice::ReadWrite);
 
