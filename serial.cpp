@@ -6,8 +6,8 @@ Serial::Serial()
 }
 
 void Serial::init(){
-
-    m_pinRX = new QSerialPort;
+    // /dev/ttyAMA0 ou /dev/ttyS0
+    m_pinRX = new QSerialPort(listPort.at(2));
 
     m_pinRX->open(QIODevice::ReadWrite);
 
@@ -26,6 +26,8 @@ void Serial::init(){
         qDebug() << listPort.at(i).portName();
         i++;
     }
+
+    qDebug() << m_pinRX->readAll();
 }
 
 // QString portName = "";
