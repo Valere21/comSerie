@@ -1,9 +1,9 @@
 #ifndef SERIAL_H
 #define SERIAL_H
 
+#include <QObject>
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include <QObject>
 
 class Serial: public QObject
 

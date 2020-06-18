@@ -25,7 +25,9 @@ void Serial::init(){
     m_pinRX->setParity(QSerialPort::NoParity);
     m_pinRX->setFlowControl(QSerialPort::NoFlowControl);
     m_pinRX->open(QIODevice::ReadWrite);
-
+    if (m_pinRX->isOpen() == true){
+        qDebug() << "Ouverture de port";
+    }
     qDebug() << "init du port" << Q_FUNC_INFO;
 
     //connect(server, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
