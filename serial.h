@@ -3,19 +3,21 @@
 
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QObject>
 
-class Serial: QObject
+class Serial: public QObject
+
 {
+    Q_OBJECT
+
+
 public:
     Serial();
 
     void init();
 
 
-
 public slots:
-
-
 
     void onReadyRead();
 
@@ -24,7 +26,7 @@ public slots:
 private:
 
     QSerialPort *m_pinRX = nullptr;
-    QList<QSerialPortInfo> listPort;
+    QList<QSerialPortInfo> m_listPort;
     //QList <QSerialPort> m_listPort;
 };
 

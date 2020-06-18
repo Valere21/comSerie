@@ -8,14 +8,14 @@ void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
 
 
-    listPort = QSerialPortInfo::availablePorts();
-    qDebug() << "ListSize: " << listPort.size();
-    m_pinRX = new QSerialPort(listPort.at(0));
+    m_listPort = QSerialPortInfo::availablePorts();
+    qDebug() << "ListSize: " << m_listPort.size();
+    m_pinRX = new QSerialPort(m_listPort.at(0));
 
     //m_pinRX = new QSerialPort();
 
     int i = 0;
-    while (i < listPort.size()){
+    while (i < m_listPort.size()){
         i++;
     }
 
