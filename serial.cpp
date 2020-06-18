@@ -11,6 +11,7 @@ void Serial::init(){
     listPort = QSerialPortInfo::availablePorts();
     qDebug() << "ListSize: " << listPort.size();
     m_pinRX = new QSerialPort(listPort.at(0));
+
     //m_pinRX = new QSerialPort();
 
     int i = 0;
@@ -25,6 +26,7 @@ void Serial::init(){
     m_pinRX->setFlowControl(QSerialPort::NoFlowControl);
     m_pinRX->open(QIODevice::ReadWrite);
 
+    qDebug() << "init du port" << Q_FUNC_INFO;
  //   listPort.append(QSerialPortInfo::availablePorts());
 
         //qDebug() << "test while" << listPort.at(i).portName();
