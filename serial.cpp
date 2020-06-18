@@ -40,5 +40,20 @@ void Serial::onReadyRead(){
     QByteArray msg = m_pinRX->readLine();
     QString::fromStdString(msg.toStdString());
     qDebug() << msg;
+
+    QString allMsg;
+
+    if (msg!= "\n'"){
+       allMsg = m_pinRX->readAll();
+    }
+    else {
+        qDebug() << allMsg;
+    }
+
+
+
+
+
+
 }
 
