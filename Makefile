@@ -53,10 +53,12 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		serial.cpp qrc_qml.cpp
+		serial.cpp qrc_qml.cpp \
+		moc_serial.cpp
 OBJECTS       = main.o \
 		serial.o \
-		qrc_qml.o
+		qrc_qml.o \
+		moc_serial.o
 DIST          = ../raspi/qt5/mkspecs/features/spec_pre.prf \
 		../raspi/qt5/mkspecs/common/unix.conf \
 		../raspi/qt5/mkspecs/common/linux.conf \
@@ -604,8 +606,70 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../raspi/qt5/mkspecs/features/data/dummy.cpp
 	/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-g++ -pipe -marm -mfpu=vfp -mtune=arm1176jzf-s -march=armv6zk -mabi=aapcs-linux -mfloat-abi=hard --sysroot=/home/crashkart/raspi/sysroot -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../raspi/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_serial.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_serial.cpp
+moc_serial.cpp: serial.h \
+		../raspi/qt5pi/include/QtSerialPort/QSerialPort \
+		../raspi/qt5pi/include/QtSerialPort/qserialport.h \
+		../raspi/qt5pi/include/QtCore/qiodevice.h \
+		../raspi/qt5pi/include/QtCore/qglobal.h \
+		../raspi/qt5pi/include/QtCore/qconfig-bootstrapped.h \
+		../raspi/qt5pi/include/QtCore/qconfig.h \
+		../raspi/qt5pi/include/QtCore/qtcore-config.h \
+		../raspi/qt5pi/include/QtCore/qsystemdetection.h \
+		../raspi/qt5pi/include/QtCore/qprocessordetection.h \
+		../raspi/qt5pi/include/QtCore/qcompilerdetection.h \
+		../raspi/qt5pi/include/QtCore/qtypeinfo.h \
+		../raspi/qt5pi/include/QtCore/qsysinfo.h \
+		../raspi/qt5pi/include/QtCore/qlogging.h \
+		../raspi/qt5pi/include/QtCore/qflags.h \
+		../raspi/qt5pi/include/QtCore/qatomic.h \
+		../raspi/qt5pi/include/QtCore/qbasicatomic.h \
+		../raspi/qt5pi/include/QtCore/qatomic_bootstrap.h \
+		../raspi/qt5pi/include/QtCore/qgenericatomic.h \
+		../raspi/qt5pi/include/QtCore/qatomic_cxx11.h \
+		../raspi/qt5pi/include/QtCore/qatomic_msvc.h \
+		../raspi/qt5pi/include/QtCore/qglobalstatic.h \
+		../raspi/qt5pi/include/QtCore/qmutex.h \
+		../raspi/qt5pi/include/QtCore/qnumeric.h \
+		../raspi/qt5pi/include/QtCore/qversiontagging.h \
+		../raspi/qt5pi/include/QtCore/qobject.h \
+		../raspi/qt5pi/include/QtCore/qobjectdefs.h \
+		../raspi/qt5pi/include/QtCore/qnamespace.h \
+		../raspi/qt5pi/include/QtCore/qobjectdefs_impl.h \
+		../raspi/qt5pi/include/QtCore/qstring.h \
+		../raspi/qt5pi/include/QtCore/qchar.h \
+		../raspi/qt5pi/include/QtCore/qbytearray.h \
+		../raspi/qt5pi/include/QtCore/qrefcount.h \
+		../raspi/qt5pi/include/QtCore/qarraydata.h \
+		../raspi/qt5pi/include/QtCore/qstringliteral.h \
+		../raspi/qt5pi/include/QtCore/qstringalgorithms.h \
+		../raspi/qt5pi/include/QtCore/qstringview.h \
+		../raspi/qt5pi/include/QtCore/qstringbuilder.h \
+		../raspi/qt5pi/include/QtCore/qlist.h \
+		../raspi/qt5pi/include/QtCore/qalgorithms.h \
+		../raspi/qt5pi/include/QtCore/qiterator.h \
+		../raspi/qt5pi/include/QtCore/qhashfunctions.h \
+		../raspi/qt5pi/include/QtCore/qpair.h \
+		../raspi/qt5pi/include/QtCore/qbytearraylist.h \
+		../raspi/qt5pi/include/QtCore/qstringlist.h \
+		../raspi/qt5pi/include/QtCore/qregexp.h \
+		../raspi/qt5pi/include/QtCore/qstringmatcher.h \
+		../raspi/qt5pi/include/QtCore/qcoreevent.h \
+		../raspi/qt5pi/include/QtCore/qscopedpointer.h \
+		../raspi/qt5pi/include/QtCore/qmetatype.h \
+		../raspi/qt5pi/include/QtCore/qvarlengtharray.h \
+		../raspi/qt5pi/include/QtCore/qcontainerfwd.h \
+		../raspi/qt5pi/include/QtCore/qobject_impl.h \
+		../raspi/qt5pi/include/QtSerialPort/qserialportglobal.h \
+		../raspi/qt5pi/include/QtSerialPort/QSerialPortInfo \
+		../raspi/qt5pi/include/QtSerialPort/qserialportinfo.h \
+		../raspi/qt5pi/include/QtCore/QObject \
+		moc_predefs.h \
+		../raspi/qt5/bin/moc
+	/home/crashkart/raspi/qt5/bin/moc $(DEFINES) --include /home/crashkart/comSerie/moc_predefs.h -I/home/crashkart/raspi/qt5/mkspecs/devices/linux-rasp-pi-g++ -I/home/crashkart/comSerie -I/home/crashkart/raspi/qt5pi/include -I/home/crashkart/raspi/qt5pi/include/QtQuick -I/home/crashkart/raspi/qt5pi/include/QtGui -I/home/crashkart/raspi/qt5pi/include/QtQml -I/home/crashkart/raspi/qt5pi/include/QtNetwork -I/home/crashkart/raspi/qt5pi/include/QtSerialPort -I/home/crashkart/raspi/qt5pi/include/QtCore -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3 -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/arm-linux-gnueabihf -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/backward -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include-fixed -I/home/crashkart/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include -I/home/crashkart/raspi/sysroot/usr/include -I/home/crashkart/raspi/sysroot/usr/include/arm-linux-gnueabihf serial.h -o moc_serial.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
@@ -616,7 +680,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -717,7 +781,8 @@ main.o: main.cpp ../raspi/qt5pi/include/QtGui/QGuiApplication \
 		../raspi/qt5pi/include/QtSerialPort/qserialport.h \
 		../raspi/qt5pi/include/QtSerialPort/qserialportglobal.h \
 		../raspi/qt5pi/include/QtSerialPort/QSerialPortInfo \
-		../raspi/qt5pi/include/QtSerialPort/qserialportinfo.h
+		../raspi/qt5pi/include/QtSerialPort/qserialportinfo.h \
+		../raspi/qt5pi/include/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 serial.o: serial.cpp serial.h \
@@ -776,6 +841,7 @@ serial.o: serial.cpp serial.h \
 		../raspi/qt5pi/include/QtSerialPort/qserialportglobal.h \
 		../raspi/qt5pi/include/QtSerialPort/QSerialPortInfo \
 		../raspi/qt5pi/include/QtSerialPort/qserialportinfo.h \
+		../raspi/qt5pi/include/QtCore/QObject \
 		../raspi/qt5pi/include/QtCore/QtDebug \
 		../raspi/qt5pi/include/QtCore/qdebug.h \
 		../raspi/qt5pi/include/QtCore/qhash.h \
@@ -794,6 +860,9 @@ serial.o: serial.cpp serial.h \
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp
+
+moc_serial.o: moc_serial.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serial.o moc_serial.cpp
 
 ####### Install
 
