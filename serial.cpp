@@ -9,8 +9,8 @@ void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
 
 
-    m_pinRX = new QSerialPort(listPort.at(1));
-
+    //m_pinRX = new QSerialPort(listPort.at(1));
+    m_pinRX = new QSerialPort();
 
     m_pinRX->setBaudRate(QSerialPort::Baud115200);
     m_pinRX->setDataBits(QSerialPort::Data8);
@@ -19,22 +19,23 @@ void Serial::init(){
     m_pinRX->setFlowControl(QSerialPort::NoFlowControl);
     m_pinRX->open(QIODevice::ReadWrite);
 
+ //   listPort.append(QSerialPortInfo::availablePorts());
     listPort = QSerialPortInfo::availablePorts();
+
     int i = 0;
     qDebug() << "ListSize: " << listPort.size();
 
     while (i < listPort.size()){
 
-        qDebug() << listPort.at(i).portName();
+        qDebug() << "test while" << Qt::endl << listPort.at(i).portName();
+        if (listPort.at(i).isNull()){
+            qDebug() << "port null" << listPort.at(i).portName();
+        }
+        else {
+            qDebug() << m_pinRX->readAll();
+        }
         i++;
     }
-
-    qDebug() << m_pinRX->readAll();
 }
-
-// QString portName = "";
-// m_pinRX->setParity()
-//  m_pinRX->setPort(listPort.at(5));
-//  m_pinRX->open(QSerialPort::Input);
 
 

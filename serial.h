@@ -15,7 +15,7 @@ private:
 
     QSerialPort *m_pinRX;
     QList<QSerialPortInfo> listPort;
-
+    QList <QSerialPort> m_listPort;
 };
 
 #endif // SERIAL_H
