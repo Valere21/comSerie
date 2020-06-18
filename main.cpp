@@ -18,7 +18,6 @@ int main(int argc, char *argv[])
     engine.load(url);
     Serial testSerie;
     testSerie.init();
-    //testSerie.getPortList();
 
     return app.exec();
 }

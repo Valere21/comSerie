@@ -4,7 +4,6 @@ Serial::Serial()
 {
 
 }
-
 void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
 
@@ -27,7 +26,7 @@ void Serial::init(){
 
     while (i < listPort.size()){
 
-        qDebug() << "test while" << Qt::endl << listPort.at(i).portName();
+        //qDebug() << "test while" << listPort.at(i).portName();
         /*if (listPort.at(i).isNull()){
             qDebug() << "port null" << listPort.at(i).portName();
         }
@@ -37,5 +36,3 @@ void Serial::init(){
         i++;
     }
 }
-
-
