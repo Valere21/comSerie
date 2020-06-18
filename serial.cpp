@@ -10,7 +10,7 @@ void Serial::init(){
 
     m_listPort = QSerialPortInfo::availablePorts();
     qDebug() << "ListSize: " << m_listPort.size();
-    m_pinRX = new QSerialPort(m_listPort.at(0));
+    m_pinRX = new QSerialPort(m_listPort.at(1));
 
     //m_pinRX = new QSerialPort();
 
