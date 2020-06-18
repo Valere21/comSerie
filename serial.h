@@ -4,16 +4,23 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-class Serial
+class Serial: QObject
 {
 public:
     Serial();
 
     void init();
 
+
+private slots:
+
+    void onReadyRead();
+
+
+
 private:
 
-    QSerialPort *m_pinRX;
+    QSerialPort *m_pinRX = nullptr;
     QList<QSerialPortInfo> listPort;
     //QList <QSerialPort> m_listPort;
 };

@@ -16,7 +16,7 @@ void Serial::init(){
 
     int i = 0;
     while (i < listPort.size()){
-        qDebug() << m_pinRX->readAll();
+        i++;
     }
 
     m_pinRX->setBaudRate(QSerialPort::Baud115200);
@@ -27,13 +27,16 @@ void Serial::init(){
     m_pinRX->open(QIODevice::ReadWrite);
 
     qDebug() << "init du port" << Q_FUNC_INFO;
- //   listPort.append(QSerialPortInfo::availablePorts());
 
-        //qDebug() << "test while" << listPort.at(i).portName();
-        /*if (listPort.at(i).isNull()){
-            qDebug() << "port null" << listPort.at(i).portName();
-        else if (listPort.at(i).isNull() != listPort.at(i).isNull()){*/
-
-        i++;
+    //connect(server, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
+    connect(m_pinRX, SIGNAL(readyRead), this, SLOT(onReadyRead()));
     }
+
+void Serial::onReadyRead(){
+
+    qDebug() << "test du read" << Q_FUNC_INFO;
+
+    qDebug() << m_pinRX->readAll();
+
+}
 
