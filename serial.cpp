@@ -31,7 +31,7 @@ void Serial::init(){
         if (listPort.at(i).isNull()){
             qDebug() << "port null" << listPort.at(i).portName();
         }
-        else {
+        else if (listPort.at(i).isNull() != listPort.at(i).isNull()){
             qDebug() << m_pinRX->readAll();
         }
         i++;
