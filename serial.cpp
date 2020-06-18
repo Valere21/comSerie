@@ -29,7 +29,7 @@ void Serial::init(){
     qDebug() << "init du port" << Q_FUNC_INFO;
 
     //connect(server, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
-    connect(m_pinRX, SIGNAL(readyRead), this, SLOT(onReadyRead()));
+    connect(m_pinRX, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
     }
 
 void Serial::onReadyRead(){
