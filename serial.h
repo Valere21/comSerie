@@ -12,7 +12,7 @@ public:
     void init();
 
 
-private slots:
+public slots:
 
     void onReadyRead();
 
