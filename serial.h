@@ -12,7 +12,11 @@ public:
     void init();
 
 
+<<<<<<< HEAD
 public slots:
+=======
+protected slots:
+>>>>>>> 57d7248e618a641e798b616652b30a0b724f834d
 
     void onReadyRead();
 
