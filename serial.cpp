@@ -44,22 +44,21 @@ void Serial::onReadyRead(){
     m_pinRX->setReadBufferSize(size);
     
     while (m_pinRX->bytesAvailable()) {
-        QByteArray msg = m_pinRX->readAll();
+        QByteArray msg;
         QByteArray msgAll;
-
-        if ( !=msg.contains('\n')){
-
-
+        
+        while (msg.contains('\n') !=msg.contains('\n')){
+            msg = m_pinRX->readAll();
+            msgAll.append(msg);
         }
-
-        qDebug() << msg;
+        qDebug() << msgAll;
     }
 }
 
-        //m_pinRX->waitForReadyRead();
-        // m_pinRX->setDataBits(size);
-        //QString::fromStdString(msg.toStdString());
-        //Serial::se
-        //QString allMsg;
+//m_pinRX->waitForReadyRead();
+// m_pinRX->setDataBits(size);
+//QString::fromStdString(msg.toStdString());
+//Serial::se
+//QString allMsg;
 
 
