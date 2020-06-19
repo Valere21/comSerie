@@ -74,6 +74,7 @@ void Serial::checkMsg(QByteArray msg){
         checkMsg(msg);
         return;
         }
+        i++;
     }
 }
 
