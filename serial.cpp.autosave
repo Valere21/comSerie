@@ -47,9 +47,8 @@ void Serial::onReadyRead(){
         QByteArray msg = m_pinRX->readAll();
         QByteArray msgAll;
 
-        if ( !=msg.contains('\n')){
-
-
+        if (msg.contains('\n') !=msg.contains('\n')){
+        msgAll.append(msg);
         }
 
         qDebug() << msg;
