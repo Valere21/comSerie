@@ -40,9 +40,12 @@ void Serial::init(){
 
 void Serial::checkMsg(QByteArray msg){
 
-    if (msg.contains('\0')){
-
+    if (!msg.contains('\0')){
         m_msgAll.append(msg);
+
+    }
+
+    else if (msg.contains('\0')){
         msg.clear();
     }
 }
@@ -55,7 +58,7 @@ void Serial::onReadyRead(){
     checkMsg(m_msg);
 
 
-   qDebug() << m_msgAll << "message nucleo";
+    qDebug() << m_msgAll << "message nucleo";
 }
 
 
