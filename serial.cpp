@@ -45,14 +45,14 @@ void Serial::checkMsg(QByteArray msg){
 
     while (i < m_msg.count()){
 
-        if (msg.at(i) == '\0'){
-            m_msgAll.append(msg);
-            msg.remove(0,msg.size());
+        if (msg.at(i) != '\0'){
+            m_msgAll.append(msg.at(i));
+            //msg.remove(0,msg.size());
             //m_msgAll.append('\n');
            // msg.clear();
         }
 
-        else if (msg.contains('\0')){
+        else if (msg.at(i) == '\0'){
             msg.remove(0,msg.size());
             //msg.clear();
         }
