@@ -43,7 +43,7 @@ void Serial::onReadyRead(){
 
     QString allMsg;
 
-    if (msg!= "\n'"){
+    if (msg.contains('\n')) {
        allMsg = m_pinRX->readAll();
     }
     else {
