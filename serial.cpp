@@ -46,7 +46,7 @@ void Serial::onReadyRead(){
     checkMsg(m_msg);
 
 
-    qDebug() << m_msgAll << "message nucleo";
+    qDebug() << m_msgAll << '\n' << "message nucleo";
 }
 
 void Serial::checkMsg(QByteArray msg){
@@ -59,7 +59,7 @@ void Serial::checkMsg(QByteArray msg){
 
          qDebug() << "boucle infini sans trouver de \n ?";
 
-        if (msg.at(i) != '\n'){
+        if (msg.at(i) != '\0'){
             m_msgAll.append(msg.at(i));
             //msg.remove(0,msg.size());
             //m_msgAll.append('\n');
@@ -67,7 +67,7 @@ void Serial::checkMsg(QByteArray msg){
 
         }
 
-        else if (msg.at(i) == '\n'){
+        else if (msg.at(i) == '\0'){
          qDebug() << "boucle infini en trouvant un \0 ?";
             msg.remove(0,i+1);
             //msg.clear();
