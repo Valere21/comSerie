@@ -15,7 +15,7 @@ public:
     Serial();
 
     void init();
-    void checkMsg(QByteArray msg);
+    void checkMsg();
 
 public slots:
 
