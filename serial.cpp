@@ -42,6 +42,8 @@ void Serial::checkMsg(QByteArray msg){
 
     if (!msg.contains('\0')){
         m_msgAll.append(msg);
+        m_msgAll.append('\n');
+        msg.clear();
 
     }
 
