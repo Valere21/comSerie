@@ -41,6 +41,7 @@ void Serial::init(){
 void Serial::checkMsg(QByteArray msg){
 
 
+    qDebug() << Q_FUNC_INFO;
     int i = 0;
 
     while (i < m_msg.count()){
@@ -67,7 +68,7 @@ void Serial::onReadyRead(){
     checkMsg(m_msg);
 
 
-    qDebug() << m_msgAll << '\n' + '\r' << "message nucleo";
+    qDebug() << m_msgAll << "message nucleo";
 }
 
 
