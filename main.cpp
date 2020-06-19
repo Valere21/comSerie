@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
     Serial testSerie;
-    testSerie.init();
+
 
     return app.exec();
 }

@@ -2,7 +2,7 @@
 #include "QtDebug"
 Serial::Serial()
 {
-
+    init();
 }
 void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
