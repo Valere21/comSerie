@@ -47,7 +47,7 @@ void Serial::onReadyRead(){
         QByteArray msg;
         QByteArray msgAll;
         
-        while (msg.contains('\n') !=msg.contains('\n')){
+        while (msg.contains('\0') !=msg.contains('\0')){
             msg = m_pinRX->readAll();
             msgAll.append(msg);
         }
