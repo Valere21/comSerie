@@ -37,11 +37,12 @@ void Serial::init(){
 void Serial::onReadyRead(){
     
     qDebug() << "test du read" << Q_FUNC_INFO;
-    
+    char size = 8;
+    m_pinRX->setReadBufferSize(size);
     
     while (m_pinRX->bytesAvailable()) {
         //Serial::se
-        //m_pinRX->waitForReadyRead();
+        m_pinRX->waitForReadyRead();
         QByteArray msg = m_pinRX->readAll();
         QString::fromStdString(msg.toStdString());
         qDebug() << msg;
