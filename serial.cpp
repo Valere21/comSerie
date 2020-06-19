@@ -51,7 +51,7 @@ void Serial::onReadyRead(){
 
             qDebug() << "boucle while de lecture";
 
-            if (m_msg.contains('\0')){
+            if (m_msg == "\0"){
 
                 qDebug() << "détection du caractère de fin de chaine";
                 m_msgAll.append(m_msg);
