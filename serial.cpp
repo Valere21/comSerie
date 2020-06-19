@@ -48,7 +48,11 @@ void Serial::onReadyRead(){
         m_msgAll.append(m_msg.at(i));
         if (m_msg.at(i) == '\0'){
             m_pinRX->close();
+<<<<<<< HEAD
             break;*/
+=======
+            break;
+>>>>>>> 719a0ccf31662494fed26460f3df0bd38a17d656
 
             char size = 64;
             m_pinRX->setReadBufferSize(size);
