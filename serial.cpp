@@ -73,7 +73,7 @@ void Serial::onReadyRead(){
 //    m_msgAll.append(m_msg.at(i));
 //    if (m_msg.at(i) == '\0'){
 //        m_pinRX->close();
-//        break;
+//        break;                        TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 //m_pinRX->waitForReadyRead();
 // m_pinRX->setDataBits(size);
