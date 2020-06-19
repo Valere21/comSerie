@@ -60,7 +60,7 @@ void Serial::onReadyRead(){
     checkMsg(m_msg);
 
 
-    qDebug() << m_msgAll << "message nucleo";
+    qDebug() << m_msgAll << '\n' + '\r' << "message nucleo";
 }
 
 
