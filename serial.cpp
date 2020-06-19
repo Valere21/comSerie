@@ -41,7 +41,7 @@ void Serial::init(){
 void Serial::checkMsg(QByteArray msg){
 
 
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << m_msg.count();
     int i = 0;
 
     while (i < m_msg.count()){
@@ -56,8 +56,8 @@ void Serial::checkMsg(QByteArray msg){
         else if (msg.at(i) == '\0'){
             msg.remove(0,i+1);
             //msg.clear();
-		checkMsg(msg);
-		return;	
+        checkMsg(msg);
+        return;
         }
     }
 }
