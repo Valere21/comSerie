@@ -54,8 +54,10 @@ void Serial::checkMsg(QByteArray msg){
         }
 
         else if (msg.at(i) == '\0'){
-            msg.remove(0,msg.size());
+            msg.remove(0,i+1);
             //msg.clear();
+		checkMsg(msg);
+		return;	
         }
     }
 }
