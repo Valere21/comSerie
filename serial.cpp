@@ -38,31 +38,6 @@ void Serial::init(){
 }
 
 
-void Serial::checkMsg(QByteArray msg){
-
-
-    qDebug() << Q_FUNC_INFO << m_msg.count();
-    int i = 0;
-
-    while (i < m_msg.count()){
-
-        if (msg.at(i) != '\0'){
-            m_msgAll.append(msg);
-            //msg.remove(0,msg.size());
-            //m_msgAll.append('\n');
-           // msg.clear();
-
-        }
-
-        else if (msg.at(i) == '\0'){
-            msg.remove(0,i+1);
-            //msg.clear();
-        checkMsg(msg);
-        return;
-        }
-    }
-}
-
 void Serial::onReadyRead(){
 
     qDebug() << "test du read" << Q_FUNC_INFO;
@@ -73,5 +48,34 @@ void Serial::onReadyRead(){
 
     qDebug() << m_msgAll << "message nucleo";
 }
+
+void Serial::checkMsg(QByteArray msg){
+
+
+    qDebug() << Q_FUNC_INFO << m_msg.count();
+    int i = 0;
+
+    while (i < m_msg.count()){
+
+         qDebug() << "boucle infini sans trouver de \0 ?";
+
+        if (msg.at(i) != '\0'){
+            m_msgAll.append(msg.at(i));
+            //msg.remove(0,msg.size());
+            //m_msgAll.append('\n');
+           // msg.clear();
+
+        }
+
+        else if (msg.at(i) == '\0'){
+         qDebug() << "boucle infini en trouvant un \0 ?";
+            msg.remove(0,i+1);
+            //msg.clear();
+        checkMsg(msg);
+        return;
+        }
+    }
+}
+
 
 
