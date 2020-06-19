@@ -27,6 +27,13 @@ private:
 
     QSerialPort *m_pinRX = nullptr;
     QList<QSerialPortInfo> m_listPort;
+    
+    QByteArray m_msg;
+    QByteArray m_msgAll;
+    bool m_flag = false;
+    
+    
+    
     //QList <QSerialPort> m_listPort;
 };
 

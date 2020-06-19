@@ -44,20 +44,17 @@ void Serial::onReadyRead(){
     m_pinRX->setReadBufferSize(size);
     
     while (m_pinRX->bytesAvailable()) {
-        QByteArray msg;
-        QByteArray msgAll;
-        bool flag = false;
 
-        while (flag == false){
-            msg = m_pinRX->readAll();
+        while (m_flag == false){
+            m_msg = m_pinRX->readAll();
 
-            if (msg.contains('\0')){
-                msgAll.append(msg);
-                flag = !flag;
+            if (m_msg.contains('\0')){
+                m_msgAll.append(m_msg);
+                m_flag = !m_flag;
             }
         }
 
-        qDebug() << msgAll;
+        qDebug() << m_msgAll;
     }
 }
 
