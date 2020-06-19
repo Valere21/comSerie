@@ -54,6 +54,8 @@ void Serial::onReadyRead(){
     m_msg = m_pinRX->readAll();
     checkMsg(m_msg);
 
+
+   qDebug() << m_msgAll << "message nucleo";
 }
 
 
