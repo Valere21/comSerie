@@ -57,9 +57,9 @@ void Serial::checkMsg(QByteArray msg){
 
     while (i < m_msg.count()){
 
-         qDebug() << "boucle infini sans trouver de \0 ?";
+         qDebug() << "boucle infini sans trouver de \n ?";
 
-        if (msg.at(i) != '\0'){
+        if (msg.at(i) != '\n'){
             m_msgAll.append(msg.at(i));
             //msg.remove(0,msg.size());
             //m_msgAll.append('\n');
@@ -67,7 +67,7 @@ void Serial::checkMsg(QByteArray msg){
 
         }
 
-        else if (msg.at(i) == '\0'){
+        else if (msg.at(i) == '\n'){
          qDebug() << "boucle infini en trouvant un \0 ?";
             msg.remove(0,i+1);
             //msg.clear();
