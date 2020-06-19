@@ -6,19 +6,19 @@ Serial::Serial()
 }
 void Serial::init(){
     // /dev/ttyAMA0 ou /dev/ttyS0
-
-
+    
+    
     m_listPort = QSerialPortInfo::availablePorts();
     qDebug() << "ListSize: " << m_listPort.size();
     m_pinRX = new QSerialPort(m_listPort.at(1));
-
+    
     //m_pinRX = new QSerialPort();
-
+    
     int i = 0;
     while (i < m_listPort.size()){
         i++;
     }
-
+    
     m_pinRX->setBaudRate(QSerialPort::Baud115200);
     m_pinRX->setDataBits(QSerialPort::Data8);
     m_pinRX->setStopBits(QSerialPort::OneStop);
@@ -29,28 +29,25 @@ void Serial::init(){
         qDebug() << "Ouverture de port";
     }
     qDebug() << "init du port" << Q_FUNC_INFO;
-
+    
     //connect(server, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
     connect(m_pinRX, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
-    }
+}
 
 void Serial::onReadyRead(){
-
+    
     qDebug() << "test du read" << Q_FUNC_INFO;
-    QByteArray msg = m_pinRX->readAll();
-    QString::fromStdString(msg.toStdString());
-    qDebug() << msg;
-
-    QString allMsg;
-
-    /*
-    if (msg.contains('\n')) {
-       allMsg = m_pinRX->readAll();
+    
+    
+    while (m_pinRX->bytesAvailable()) {
+        //Serial::se
+        //m_pinRX->waitForReadyRead();
+        QByteArray msg = m_pinRX->readAll();
+        QString::fromStdString(msg.toStdString());
+        qDebug() << msg;
+        
+        QString allMsg;
     }
-    else {
-        qDebug() << allMsg;
-    }
-    */
-
 }
+
 
