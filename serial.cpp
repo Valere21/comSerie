@@ -40,17 +40,22 @@ void Serial::init(){
 
 void Serial::checkMsg(QByteArray msg){
 
-    if (!msg.contains('\0')){
-        m_msgAll.append(msg);
-        msg.remove(msg.at(msg.size()),msg.size());
-        //m_msgAll.append('\n');
-        msg.clear();
 
-    }
+    int i = 0;
 
-    else if (msg.contains('\0')){
-        msg.remove(msg.at(msg.size()),msg.size());
-        //msg.clear();
+    while (i < m_msg.count()){
+
+        if (msg.at(i) == '\0'){
+            m_msgAll.append(msg);
+            msg.remove(0,msg.size());
+            //m_msgAll.append('\n');
+            msg.clear();
+        }
+
+        else if (msg.contains('\0')){
+            msg.remove(0,msg.size());
+            //msg.clear();
+        }
     }
 }
 
