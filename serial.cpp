@@ -57,10 +57,10 @@ void Serial::checkMsg(){
 
     while (i < m_msg.count()){
 
-        if (m_msg.at(i) == '\0'){
+        if (m_msg.at(i) == '\n'){
             m_msgAll = m_msg.left(i);
             m_msg.remove(0,i+1);
-            qDebug() << m_msgAll;
+            qDebug() << m_msgAll << i;
             //msg.clear();
             checkMsg();
             return;
