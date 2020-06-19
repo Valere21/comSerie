@@ -49,7 +49,11 @@ void Serial::onReadyRead(){
             m_msg = m_pinRX->readAll();
             m_msgAll.append(m_msg);
 
+            qDebug() << "boucle while de lecture";
+
             if (m_msg.contains('\0')){
+
+                qDebug() << "détection du caractère de fin de chaine";
                 m_msgAll.append(m_msg);
                 m_flag = !m_flag;
             }
