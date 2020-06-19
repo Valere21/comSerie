@@ -31,7 +31,7 @@ void Serial::init(){
     else {
         qDebug() << "Problème d'ouverture de port";
     }
-    qDebug() << "init du port" << Q_FUNC_INFO;
+    // qDebug() << "init du port" << Q_FUNC_INFO;
 
     //connect(server, SIGNAL(newConnection()),this, SLOT(onNewConnection()));
     connect(m_pinRX, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
@@ -44,35 +44,36 @@ void Serial::onReadyRead(){
     m_msg = m_pinRX->readAll();
 
 
-    for (int i = 0; i < m_msg.size(); i++){
-        m_msgAll.append(m_msg.at(i));
-        if (m_msg.at(i) == '\0'){
-            m_pinRX->close();
-            break;
-/*
-char size = 64;
-m_pinRX->setReadBufferSize(size);
 
-while (m_pinRX->bytesAvailable()) {
+    char size = 64;
+    m_pinRX->setReadBufferSize(size);
 
-    while (m_flag == false){
-        m_msg = m_pinRX->readAll();
-        m_msgAll.append(m_msg);
+    while (m_pinRX->bytesAvailable()) {
 
-        qDebug() << "boucle while de lecture";
-
-        if (m_msg == "\0"){
-
-            qDebug() << "détection du caractère de fin de chaine";
+        while (m_flag == false){
+            m_msg = m_pinRX->readAll();
             m_msgAll.append(m_msg);
-            m_flag = !m_flag;
-            qDebug() << m_msgAll;*/
 
+            qDebug() << "boucle while de lecture";
+
+            if (m_msg == "\0"){
+
+                qDebug() << "détection du caractère de fin de chaine";
+                m_msgAll.append(m_msg);
+                m_flag = !m_flag;
+                qDebug() << m_msgAll;
+
+            }
         }
     }
 }
 
 
+//for (int i = 0; i < m_msg.size(); i++){
+//    m_msgAll.append(m_msg.at(i));
+//    if (m_msg.at(i) == '\0'){
+//        m_pinRX->close();
+//        break;
 
 //m_pinRX->waitForReadyRead();
 // m_pinRX->setDataBits(size);
