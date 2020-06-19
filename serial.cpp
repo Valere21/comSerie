@@ -47,15 +47,15 @@ void Serial::onReadyRead(){
 
         while (m_flag == false){
             m_msg = m_pinRX->readAll();
-	    m_msgAll.append(m_msg);
-	
+            m_msgAll.append(m_msg);
+
             if (m_msg.contains('\0')){
                 m_msgAll.append(m_msg);
                 m_flag = !m_flag;
             }
+            qDebug() << m_msgAll;
         }
 
-        qDebug() << m_msgAll;
     }
 }
 
