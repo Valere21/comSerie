@@ -41,7 +41,7 @@ void Serial::onReadyRead(){
     
     while (m_pinRX->bytesAvailable()) {
         //Serial::se
-        m_pinRX->waitForReadyRead();
+        //m_pinRX->waitForReadyRead();
         QByteArray msg = m_pinRX->readAll();
         QString::fromStdString(msg.toStdString());
         qDebug() << msg;
