@@ -47,6 +47,7 @@ void Serial::onReadyRead(){
     for (int i = 0; i < m_msg.size(); i++){
         m_msgAll.append(m_msg.at(i));
         if (m_msg.at(i) == '\n'){
+            m_pinRX->close();
             break;
 
         }
